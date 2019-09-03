@@ -1,6 +1,4 @@
-package org.seefly.tinyioc.step3;
-
-import java.util.List;
+package org.seefly.tinyioc.step4;
 
 /**
  * @author liujianxin

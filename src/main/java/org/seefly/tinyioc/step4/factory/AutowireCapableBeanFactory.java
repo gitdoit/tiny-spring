@@ -1,8 +1,9 @@
-package org.seefly.tinyioc.step3.factory;
+package org.seefly.tinyioc.step4.factory;
 
-import org.seefly.tinyioc.step3.BeanDefinition;
-import org.seefly.tinyioc.step3.PropertyValue;
-import org.seefly.tinyioc.step3.PropertyValues;
+
+import org.seefly.tinyioc.step4.BeanDefinition;
+import org.seefly.tinyioc.step4.PropertyValue;
+import org.seefly.tinyioc.step4.PropertyValues;
 
 import java.lang.reflect.Field;
 import java.util.List;

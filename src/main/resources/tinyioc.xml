@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean name="hello" class="org.seefly.tinyioc.step4.HelloWorld">
+        <property name="name" value="xml"></property>
+    </bean>
+
+</beans>

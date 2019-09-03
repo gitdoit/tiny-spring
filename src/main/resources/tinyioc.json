@@ -1,0 +1,11 @@
+[
+  {
+    "beanName":"hello",
+    "beanClassName":"org.seefly.tinyioc.step4.HelloWorld",
+    "properties":[
+      {
+        "name":"json"
+      }
+    ]
+  }
+]

@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2019/9/3 0:25
  */
 public class BeanFactory {
-    private Map<String,BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>();
+    private Map<String,BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
     public Object getBean(String beanName){
         BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
