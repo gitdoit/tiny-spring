@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean name="dancer" class="org.seefly.tinyioc.step6.Dancer">
+    </bean>
+
+    <bean name="hello" class="org.seefly.tinyioc.step6.HelloWorld">
+        <property name="name" value="xml"></property>
+        <property name="dancer" ref="dancer"></property>
+    </bean>
+
+</beans>
