@@ -43,15 +43,21 @@ public class AspectJAwareAdvisorAutoProxyCreator implements BeanPostProcessor, B
             // 这里的做法是只要类匹配上了就创建代理
             // 我看源码上好像是对其中的方法也要匹配，有任何一个匹配上了才创建代理
             if(advisor.getPointcut().getClassFilter().matches(bean.getClass())){
-                AdvisedSupport advisedSupport = new AdvisedSupport();
-                advisedSupport.setMethodInterceptor((MethodInterceptor) advisor.getAdvice());
-                advisedSupport.setMethodMatcher(advisor.getPointcut().getMethodMatcher());
 
-                TargetSource targetSource = new TargetSource(bean,bean.getClass().getInterfaces());
-                advisedSupport.setTargetSource(targetSource);
-                return new JdkDynamicAopProxy(advisedSupport).getProxy();
+                // 使用代理工厂
+                // 代理工厂使用策略模式+代理模式
+                // 策略模式用于选择使用JDK还是CGLIB
+                // 代理模式是内部使用选中的AopProxy来创建代理
+                ProxyFactory proxyFactory = new ProxyFactory();
+                proxyFactory.setMethodInterceptor((MethodInterceptor) advisor.getAdvice());
+                proxyFactory.setMethodMatcher(advisor.getPointcut().getMethodMatcher());
+
+                TargetSource targetSource = new TargetSource(bean,bean.getClass(),bean.getClass().getInterfaces());
+                proxyFactory.setTargetSource(targetSource);
+
+                return proxyFactory.getProxy();
             }
         }
-        return null;
+        return bean;
     }
 }

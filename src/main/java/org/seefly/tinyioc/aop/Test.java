@@ -24,7 +24,7 @@ public class Test {
         // 创建元信息
         AdvisedSupport advisedSupport = new AdvisedSupport();
         // 创建代理对象描述
-        TargetSource targetSource = new TargetSource(helloWorld,Say.class);
+        TargetSource targetSource = new TargetSource(helloWorld,helloWorld.getClass(),Say.class);
         advisedSupport.setTargetSource(targetSource);
 
         //设置拦截器

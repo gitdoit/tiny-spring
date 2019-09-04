@@ -6,17 +6,24 @@ package org.seefly.tinyioc.aop.aop;
  * @date 2019/9/3 23:21
  */
 public class TargetSource {
-    private Class<?>[] targetClass;
+    private Class<?> targetClass;
+
+    private Class<?>[] interfaces;
 
     private Object target;
 
-    public TargetSource(Object target, Class<?>... targetClass) {
+    public TargetSource(Object target, Class<?> targetClass,Class<?>... interfaces) {
         this.target = target;
+        this.interfaces = interfaces;
         this.targetClass = targetClass;
     }
 
-    public Class<?>[] getTargetClass() {
+    public Class<?> getTargetClass() {
         return targetClass;
+    }
+
+    public Class<?>[] getInterfaces() {
+        return interfaces;
     }
 
     public Object getTarget() {

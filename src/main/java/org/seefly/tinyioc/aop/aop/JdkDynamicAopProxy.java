@@ -10,11 +10,10 @@ import java.lang.reflect.Proxy;
  * @author liujianxin
  * @date 2019/9/3 23:33
  */
-public class JdkDynamicAopProxy implements AopProxy, InvocationHandler {
-    private AdvisedSupport advisedSupport;
+public class JdkDynamicAopProxy extends AbstractAopProxy implements InvocationHandler {
 
     public JdkDynamicAopProxy(AdvisedSupport advisedSupport) {
-        this.advisedSupport = advisedSupport;
+        super(advisedSupport);
     }
 
     @Override
@@ -31,9 +30,8 @@ public class JdkDynamicAopProxy implements AopProxy, InvocationHandler {
     }
 
 
-
     @Override
     public Object getProxy() {
-        return Proxy.newProxyInstance(getClass().getClassLoader(), advisedSupport.getTargetSource().getTargetClass(),this);
+        return Proxy.newProxyInstance(getClass().getClassLoader(), advisedSupport.getTargetSource().getInterfaces(),this);
     }
 }
