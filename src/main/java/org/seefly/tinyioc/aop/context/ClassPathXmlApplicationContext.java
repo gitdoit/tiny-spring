@@ -22,14 +22,13 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
         this(new AutowireCapableBeanFactory(),location);
     }
 
+
     @Override
-    public void refresh() throws Exception {
+    protected void loadBeanDefinitions(AbstractBeanFactory beanFactory) throws Exception {
         // 加载定义信息
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new UrlResourceLoader());
         reader.loadBeanDefinitions(location);
         // 将加载的bean定义信息注册容器中
         reader.getRegistry().forEach((name,beanDefinition) -> beanFactory.registerBeanDefinition(name,beanDefinition));
-        // 初始化单例
-        beanFactory.perInstanceSingletons();
     }
 }

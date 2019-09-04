@@ -3,7 +3,9 @@ package org.seefly.aop;
 import org.junit.Assert;
 import org.junit.Test;
 import org.seefly.tinyioc.aop.HelloWorld;
+import org.seefly.tinyioc.aop.Say;
 import org.seefly.tinyioc.aop.aop.AspectJExpressionPointcut;
+import org.seefly.tinyioc.aop.context.ClassPathXmlApplicationContext;
 
 /**
  * @author liujianxin
@@ -20,4 +22,13 @@ public class AopTest {
         boolean sayHello = aspectJExpressionPointcut.getMethodMatcher().matches(HelloWorld.class.getDeclaredMethod("sayHello"), HelloWorld.class);
         Assert.assertTrue(sayHello);
     }
+
+    @Test
+    public void testAopAutoCreator() throws Exception {
+        ClassPathXmlApplicationContext factory = new ClassPathXmlApplicationContext("tinyiocaop.xml");
+        Say helloWorld = (Say)factory.getBean("hello");
+        helloWorld.sayHello();
+    }
+
+
 }

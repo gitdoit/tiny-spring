@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+
+    <bean name="hello" class="org.seefly.tinyioc.aop.HelloWorld">
+        <property name="name" value="xml+aop+autoCreator"></property>
+    </bean>
+
+    <bean name="logAdvice" class="org.seefly.tinyioc.aop.LogInterceptor"></bean>
+
+    <bean name="advisor" class="org.seefly.tinyioc.aop.aop.AspectJExpressionPointcutAdvisor">
+        <property name="expression" value="execution(* org.seefly.tinyioc.aop.*.say*(..))"></property>
+        <property name="advice" ref="logAdvice"></property>
+    </bean>
+
+    <bean name="autoProxyCreator" class="org.seefly.tinyioc.aop.aop.AspectJAwareAdvisorAutoProxyCreator">
+
+    </bean>
+
+</beans>
