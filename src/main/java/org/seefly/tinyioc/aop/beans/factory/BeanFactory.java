@@ -6,5 +6,4 @@ package org.seefly.tinyioc.aop.beans.factory;
  */
 public interface BeanFactory {
     Object getBean(String beanName) throws Exception;
-
 }
